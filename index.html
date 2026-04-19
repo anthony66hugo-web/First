@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#2a201c" />
+    <title>Dish — Find it. See it. Go eat it.</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="phone" role="application" aria-label="Dish app">
+      <!-- Status bar spacer for notch-style chrome -->
+      <div class="status-bar" aria-hidden="true"></div>
+
+      <!-- Top bar: logo + notifications + avatar -->
+      <header class="top-bar">
+        <div class="brand">
+          <h1 class="wordmark">DISH</h1>
+          <p class="tagline">
+            Find it. See it. <span class="accent">Go eat it.</span>
+          </p>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn bell" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 22a2.2 2.2 0 0 0 2.2-2.2h-4.4A2.2 2.2 0 0 0 12 22Zm6.6-6.6V10a6.6 6.6 0 0 0-5.5-6.5V2.8a1.1 1.1 0 1 0-2.2 0v.7A6.6 6.6 0 0 0 5.4 10v5.4L3.8 17a.9.9 0 0 0 .6 1.5h15.2a.9.9 0 0 0 .6-1.5Z"
+              />
+            </svg>
+            <span class="badge" id="notif-count">3</span>
+          </button>
+          <button class="avatar-btn" aria-label="Your profile">
+            <span
+              class="avatar"
+              style="background-image: url('https://i.pravatar.cc/120?img=47')"
+            ></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Search -->
+      <form class="search" role="search" onsubmit="event.preventDefault()">
+        <span class="search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M10 3a7 7 0 1 1-4.6 12.3l-3.1 3.1-1.4-1.4 3.1-3.1A7 7 0 0 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"
+            />
+          </svg>
+        </span>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Eggplant Parm in St. Pete"
+          autocomplete="off"
+        />
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+
+      <!-- Category chips -->
+      <nav class="chips" aria-label="Categories">
+        <div class="chips-track" id="chips-track"></div>
+        <button class="chips-next" aria-label="More categories">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.6 5.6 14.9 12l-6.3 6.4L7.2 17l4.9-5-4.9-5z" />
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Scrollable content -->
+      <main class="feed">
+        <!-- Hero featured dish -->
+        <section class="hero card" aria-label="Featured dish">
+          <div
+            class="hero-media"
+            style="background-image: url('https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=1200&q=80')"
+          >
+            <div class="hero-overlay"></div>
+
+            <div class="hero-text">
+              <h2 class="hero-title">Bella Roma</h2>
+              <p class="hero-loc">St. Petersburg, FL</p>
+              <p class="hero-dist">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="pin">
+                  <path
+                    d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"
+                  />
+                </svg>
+                2.5 mi
+              </p>
+            </div>
+
+            <div class="hero-stats">
+              <button class="stat" data-action="like">
+                <span class="stat-ico">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M7 2v9h2V2H7Zm8 0c-.9 0-1.6.4-2 1v8h2v4h-2v7h2a2 2 0 0 0 2-2v-6l2-5V4a2 2 0 0 0-2-2h-2Zm-5 9H8v11h2V11Zm-6 0H3v5h2v-5Z"
+                    />
+                  </svg>
+                </span>
+                <span class="stat-count" data-count="likes">325</span>
+              </button>
+              <button class="stat" data-action="comment">
+                <span class="stat-ico">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 0-2Z"
+                    />
+                  </svg>
+                </span>
+                <span class="stat-count" data-count="comments">46</span>
+              </button>
+              <div class="stat stat-static" aria-label="Distance">
+                <span class="stat-ico">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"
+                    />
+                  </svg>
+                </span>
+                <span class="stat-count">2.5 mi</span>
+              </div>
+            </div>
+
+            <button class="play-btn" aria-label="Play video">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 4v16l13-8z" />
+              </svg>
+              Play
+            </button>
+
+            <button class="menu-btn">
+              View Menu
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.6 5.6 14.9 12l-6.3 6.4L7.2 17l4.9-5-4.9-5z" />
+              </svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- More dishes to love -->
+        <section class="row" aria-label="More dishes to love">
+          <header class="row-head">
+            <h3>More dishes to love</h3>
+            <button class="link">See all</button>
+          </header>
+          <div class="row-track" id="more-dishes"></div>
+        </section>
+
+        <!-- Curated for you -->
+        <section class="row" aria-label="Curated for you">
+          <header class="row-head">
+            <h3>Curated for you</h3>
+            <span class="row-sub">Based on your favorites</span>
+          </header>
+          <div class="row-track tall" id="curated"></div>
+        </section>
+
+        <div class="feed-bottom-spacer" aria-hidden="true"></div>
+      </main>
+
+      <!-- Bottom nav -->
+      <nav class="tabbar" aria-label="Primary">
+        <button class="tab" data-tab="home">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z" />
+          </svg>
+          <span>Home</span>
+        </button>
+        <button class="tab" data-tab="discover">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M10 3a7 7 0 1 1-4.6 12.3l-3.1 3.1-1.4-1.4 3.1-3.1A7 7 0 0 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"
+            />
+          </svg>
+          <span>Discover</span>
+        </button>
+        <button class="tab tab-center" data-tab="eat" aria-label="Eat">
+          <span class="tab-center-ring">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M8 2v9a2 2 0 0 0 2 2v9h2v-9a2 2 0 0 0 2-2V2h-1v7h-2V2h-1v7H9V2H8Zm9 0a3 3 0 0 0-3 3v8h2v9h2V2Z"
+              />
+            </svg>
+          </span>
+          <span class="tab-center-label">Eat</span>
+        </button>
+        <button class="tab" data-tab="favorites">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 21s-7-4.5-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6C19 16.5 12 21 12 21Z"
+            />
+          </svg>
+          <span>Favorites</span>
+        </button>
+        <button class="tab" data-tab="profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5Z"
+            />
+          </svg>
+          <span>Profile</span>
+        </button>
+      </nav>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
